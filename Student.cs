@@ -21,13 +21,13 @@ namespace ConsoleApp9student
         public string Nic { get => nic; set => nic = value; }
 
 
-        public Student(int indexnumber, string name, double gpa, int admissionyear, string nic)
-        {
-            this.indexnumber = indexnumber;
-            this.name = name;
-            this.gpa = gpa;
-            this.admissionyear = admissionyear;
-            this.nic = nic;
-        }
+        //public Student(int indexnumber, string name, double gpa, int admissionyear, string nic)
+        //{
+        //    this.indexnumber = indexnumber;
+        //    this.name = name;
+        //    this.gpa = gpa;
+        //    this.admissionyear = admissionyear;
+        //    this.nic = nic;
+        //}
     }
 }

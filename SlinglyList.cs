@@ -22,37 +22,35 @@ namespace ConsoleApp9student
 
         public void Add(Node student)
         {
-
+            // Case 1: Empty list or student should be first
             if (head == null || student.Student.Indexnumber < head.Student.Indexnumber)
             {
-
                 student.Next = head;
                 head = student;
                 return;
             }
 
-
             Node current = head;
 
+            // Traverse until the correct position
             while (current.Next != null && current.Next.Student.Indexnumber < student.Student.Indexnumber)
             {
-                if (current.Student.Indexnumber == student.Student.Indexnumber)
-                {
-                    Console.WriteLine("student with this Index Number already Exists");
-                    return;
-                }
-                else
-                {
-                    student.Next = current.Next;
-                    current.Next = student;
-                }
-
-
-
+                current = current.Next;
             }
 
+            // Check for duplicate
+            if (current.Next != null && current.Next.Student.Indexnumber == student.Student.Indexnumber)
+            {
+                Console.WriteLine("Student with this Index Number already exists.");
+                return;
+            }
 
+            // Insert student
+            student.Next = current.Next;
+            current.Next = student;
         }
+
+
 
         public Node searchstudent(int indexnumber)
         {
@@ -75,27 +73,28 @@ namespace ConsoleApp9student
 
         public void Removestudent(int indexnumber)
         {
-            if(head == null)
+            if (head == null)
             {
                 return;
             }
-            if(head.Student.Indexnumber == indexnumber)
+            if (head.Student.Indexnumber == indexnumber)
             {
                 head = head.Next;
                 return;
             }
             Node current = head;
             Node previous = head;
-            while (head != null && current.Student.Indexnumber != indexnumber)
+            while (current != null && current.Student.Indexnumber != indexnumber)
             {
                 previous = current;
                 current = current.Next;
             }
-            if (current != null) {return; }
+            if (current == null) return;
             previous.Next = current.Next;
         }
         public void Display()
         {
+            
             if(head == null)
             {
                 Console.WriteLine("No students Records");
@@ -104,6 +103,7 @@ namespace ConsoleApp9student
             Node current = head;
             while (current != null) 
             {
+                
                 Console.WriteLine("Index Number: " + current.Student.Indexnumber);
                 Console.WriteLine("Name: " + current.Student.Name);
                 Console.WriteLine("GPA: " + current.Student.Gpa);
